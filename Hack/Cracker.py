@@ -1,16 +1,18 @@
 import pyzipper
 
-zip_file_path = 'Crack_me0.zip'
-output_dir = '.'
+zip_file_path = 'Hack/Crack_me.zip'
+output_dir = './Hack/'
 
-for i in range(1600):
-    s = eval("b'{}'".format(i))
+for i in range(7000):
+    m = str(i)
+    while len(m) < 4:
+        m = '0' + m
+    s = eval(f"b'{m}'")
     try:
         with pyzipper.AESZipFile(zip_file_path) as zf:
             zf.pwd = s
             zf.extractall(output_dir)
-        print("Extraction successful! Password is: {}".format(i))
+        print("Extraction successful! Password is: {}".format(m))
         break
-        exit()
     except Exception:
-        print(i)
+        print(m)
